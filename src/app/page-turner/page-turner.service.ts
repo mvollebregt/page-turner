@@ -1,5 +1,7 @@
 import {Injectable} from "@angular/core";
-import {ActivatedRoute, Router, Route} from "@angular/router";
+import {ActivatedRoute, Router, ActivatedRouteSnapshot, Route} from "@angular/router";
+
+type AR = ActivatedRoute | ActivatedRouteSnapshot;
 
 @Injectable()
 export class PageTurnerService {
@@ -8,10 +10,20 @@ export class PageTurnerService {
   }
 
   next(): void {
-    let [base, pages, index] = this.pagesAndIndex();
-    if (index + 1 < pages.length) {
-      this.router.navigate([pages[index + 1].path], {relativeTo: base});
+    let [base, page] = this.getNext(this.activatedRoute);
+    if (page) {
+      this.router.navigate([page], {relativeTo: <ActivatedRoute> base});
     }
+  }
+
+  getPrevious<T extends AR>(node: AR): [T, string] {
+    let [base, pages, index] = this.pagesAndIndex(node);
+    return [<T> base, index > 0 ? pages[index - 1].path : undefined];
+  }
+
+  getNext<T extends AR>(node: AR): [T, string] {
+    let [base, pages, index] = this.pagesAndIndex(node);
+    return [<T> base, index + 1 < pages.length ? pages[index + 1].path : undefined];
   }
 
   // Returns a tuple of:
@@ -22,11 +34,10 @@ export class PageTurnerService {
   //
   // If the current ActivatedRoute itself contains children, the current ActivatedRoute itself is returned as base
   // route.
-  pagesAndIndex(): [ActivatedRoute, Route[], number] {
+  pagesAndIndex<T extends AR>(node: T): [T, Route[], number] {
     // traverse to leaf of currently loaded component tree
-    let node: ActivatedRoute = this.activatedRoute;
     while (node.firstChild) {
-      node = node.firstChild;
+      node = <T> node.firstChild;
     }
     // does the component have child routes?
     if (node.routeConfig.children) {
@@ -35,7 +46,7 @@ export class PageTurnerService {
     } else {
       // no? then we can find the index of the current route in the route config of the direct parent component
       let pages = node.parent.routeConfig.children;
-      return [node.parent, pages, pages.findIndex(child => child.path === node.routeConfig.path)];
+      return [<T> node.parent, pages, pages.findIndex(child => child.path === node.routeConfig.path)];
     }
   }
 }

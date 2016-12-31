@@ -1,8 +1,12 @@
 import {NgModule} from "@angular/core";
 import {PageTurnerService} from "./page-turner.service";
+import {CompletedGuard} from "./completed-guard.service";
 
 @NgModule({
-  providers: [PageTurnerService]
+  providers: [
+    CompletedGuard,
+    PageTurnerService
+  ]
 })
 export class PageTurnerModule {
 }

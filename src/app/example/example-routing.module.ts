@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Route} from "@angular/router";
 import {PageComponent} from "./page/page.component";
 import {ExampleComponent} from "./example/example.component";
+import {CompletedGuard} from "../page-turner/completed-guard.service";
 
 const pages: Route[] = [
   {path: 'page1', component: PageComponent, data: {index: 1}},
@@ -10,7 +11,7 @@ const pages: Route[] = [
   {path: 'page4', component: PageComponent, data: {index: 4}}
 ];
 
-const routes: Route[] = [{path: '', component: ExampleComponent, children: pages}];
+const routes: Route[] = [{path: '', component: ExampleComponent, children: pages, canActivateChild: [CompletedGuard]}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
