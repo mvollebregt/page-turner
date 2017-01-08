@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Route} from "@angular/router";
 
 const routes: Route[] = [
-  {path: 'example', loadChildren: 'app/example/example.module#ExampleModule'}
+  {path: '', redirectTo: 'example', pathMatch: 'full'}
 ];
 
 @NgModule({

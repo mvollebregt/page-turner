@@ -4,7 +4,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {AppRoutingModule} from "./app-routing.module";
-import {PageTurnerModule} from "./page-turner/page-turner.module";
+import {ExampleModule} from "./example/example.module";
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import {PageTurnerModule} from "./page-turner/page-turner.module";
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    PageTurnerModule
+    ExampleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
