@@ -5,17 +5,19 @@ import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {ExampleModule} from "./example/example.module";
+import {TypescriptCourseModule} from "./typescript-course/typescript-course.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    ExampleModule
+    ExampleModule,
+    TypescriptCourseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
