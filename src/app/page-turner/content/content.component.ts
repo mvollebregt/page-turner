@@ -1,5 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
+import {Http} from "@angular/http";
+const marked = require('marked');
 
 @Component({
   selector: 'app-content',
@@ -8,16 +10,13 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ContentComponent implements OnInit {
 
-  title: string;
-  sections: string[];
+  html: string;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private http: Http) {
   }
 
   ngOnInit() {
-    this.activatedRoute.data.subscribe(data => {
-      this.title = data['title'];
-      this.sections = data['sections'];
-    });
+    const path = this.activatedRoute.routeConfig.path;
+    this.http.get(`assets/${path}.html`).subscribe(response => this.html = response.text());
   }
 }

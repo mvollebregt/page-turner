@@ -3,10 +3,12 @@ import {PageTurnerService} from "./page-turner.service";
 import {CompletedGuard} from "./completed-guard.service";
 import {ContentComponent} from "./content/content.component";
 import {CommonModule} from "@angular/common";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpModule
   ],
   providers: [
     CompletedGuard,

@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Route} from "@angular/router";
 
 const routes: Route[] = [
-  {path: '', redirectTo: 'example', pathMatch: 'full'}
+  {path: '', redirectTo: 'typescript', pathMatch: 'full'}
 ];
 
 @NgModule({
