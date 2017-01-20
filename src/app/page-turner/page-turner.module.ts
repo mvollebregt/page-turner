@@ -4,6 +4,7 @@ import {CompletedGuard} from "./completed-guard.service";
 import {ContentComponent} from "./content/content.component";
 import {CommonModule} from "@angular/common";
 import {HttpModule} from "@angular/http";
+import {AnswerDirective} from "./answer.directive";
 
 @NgModule({
   imports: [
@@ -14,7 +15,13 @@ import {HttpModule} from "@angular/http";
     CompletedGuard,
     PageTurnerService
   ],
-  declarations: [ContentComponent]
+  declarations: [
+    AnswerDirective,
+    ContentComponent
+  ],
+  exports: [
+    AnswerDirective
+  ]
 })
 export class PageTurnerModule {
 }

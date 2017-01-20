@@ -1,0 +1,75 @@
+<h2>Standaard types</h2>
+
+<p>
+  Zoals we op de vorige pagina zagen, heeft TypeScript een aantal types standaard ingebouwd. Types als string, boolean
+  en number kennen we al uit JavaScript. Deze types zijn ook geldig in TypeScript. Daarnaast kent TypeScript een aantal
+  extra types, bovenop JavaScript.
+</p>
+
+<p>
+  De standaard types van TypeScript staan beschreven in de documentatie van TypeScript. Bestudeer de types en probeer
+  daarna de volgende vraag te beantwoorden.
+</p>
+
+<p>
+  <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html">Lees meer</a>
+</p>
+
+<h3>Vraag</h3>
+
+<p>
+  Welke van de onderstaande types zijn geldige types in TypeScript?
+</p>
+
+<form #form="ngForm" (ngSubmit)="markAsPristine(form)">
+  <div>
+    <label>
+      <input type="checkbox" id="string" name="string" ngModel [answer]="true"> string
+    </label>
+    <div *ngIf="isInvalid(form, 'string')">string is een geldig type, net als in JavaScript.</div>
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" id="boolean" name="boolean" ngModel [answer]="true"> boolean
+    </label>
+    <div *ngIf="isInvalid(form, 'boolean')">boolean is een geldig type, net als in JavaScript.</div>
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" id="integer" name="integer" ngModel [answer]="false"> integer
+    </label>
+    <div *ngIf="isInvalid(form, 'integer')">
+      TypeScript kent geen onderscheid tussen integers, floats en doubles. Er is slechts &eacute;&eacute;n type, number,
+      net als in JavaScript.
+    </div>
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" id="array" name="array" ngModel [answer]="true"> Array&lt;string&gt;
+    </label>
+    <div *ngIf="isInvalid(form, 'array')">Array&lt;string&gt; is een geldige manier om een array van strings aan te
+      duiden. Het betekent exact hetzelfde als string[]
+    </div>
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" id="tuple" name="tuple" ngModel [answer]="true"> [string, number]
+    </label>
+    <div *ngIf="isInvalid(form, 'tuple')">
+      Dit is de correcte manier om een tuple aan te duiden. Een tuple is een combinatie van een vast aantal typen en kan
+      bijvoorbeeld heel handig gebruikt worden om meerdere waarden in &eacute;&eacute;n keer uit een functie terug te
+      geven.
+    </div>
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" id="any" name="any" ngModel [answer]="true"> any
+    </label>
+    <div *ngIf="isInvalid(form, 'any')">any is het type dat alle andere types omvat. Een variabele van type any kan
+      iedere willekeurige waarde bevatten, net als variabelen in JavaScript dat altijd kunnen.
+    </div>
+  </div>
+  <div *ngIf="form.submitted && form.valid && form.pristine">Je hebt de goede antwoorden aangekruist.</div>
+  <button type="submit">Controleer</button>
+</form>
+
